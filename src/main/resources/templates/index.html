@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/mvc" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Amazon RDS demo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container pt-5" id="pagecontent">
+
+    <div class="container my-5 pt-5" th:if="${enterData}"></div>
+
+    <div th:if="${enterData}" class="container ml-5 pl-5 mt-5 pt-5" id="saveDatasection">
+
+        <div class="container ml-5 pl-5">
+            <h1>User Registration</h1>
+
+            <form th:action="@{savedata}" method="post" th:object="${user}">
+
+                <div class=" container mt-5 form-group">
+                    <label class="d-inline-flex" for="FormControlTextarea1">Name</label>
+                    <input th:name="name" th:value="${name}"
+                           class=" d-inline-flex form-control" id="FormControlTextarea1">
+                    <label for="FormControlTextarea2">Last Name</label>
+                    <input th:name="lastname" th:value="${lastname}"
+                           class="d-inline-flex form-control" id="FormControlTextarea2">
+                </div>
+                <button type="submit" class=" my-3 btn btn-light reviewButtons">Submit</button>
+            </form>
+
+            <a th:if="${enterData}" th:href="@{/showData}" class="showusers"><p>Show Users</p></a>
+        </div>
+    </div>
+
+    <div class="container mt-3" id="showDataSection">
+        <div class="row">
+            <div th:if="${showData}" class="col-6"></div>
+            <div class="col-6">
+                <h1 th:if="${showData}">Registered Users</h1>
+                <section id="listUsers" th:if="${showData}">
+
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">First Name</th>
+                                    <th scope="col">Last Name</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr id="user" data-th-each=" user : ${userList}">
+                                    <td><span th:text="${user.name}"></span></td>
+                                    <td><span th:text="${user.lastname}"></span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="container mt-3">
+                    <a th:if="${showData}" th:href="@{/}" id="newUserButton" class="d-flex justify-content-center">
+                        <button type="button">New User</button>
+                    </a>
+                </div>
+            </div>
+            </div>
+        </div>
+</div>
+
+<section id="footer">
+    <div class="container mt-2 pt-2">
+        <p>CEN4083 U01 1198</p>
+    </div>
+</section>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

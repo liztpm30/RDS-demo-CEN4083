@@ -1,0 +1,43 @@
+
+body{
+    background-image: url("/img/img.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+}
+
+h1{
+    color: rgb(24, 26, 31);
+    text-align: center;
+}
+
+#saveDatasection{
+    text-align: center;
+}
+
+.form-group input{
+    width: 10rem;
+}
+
+.showusers{
+    color: rgb(24, 26, 31) !important;
+}
+
+.table{
+    margin: auto;
+    width: 100% !important;
+    text-align: center;
+}
+
+#footer p{
+    text-align: center;
+    color: white;
+}
+
+#footer{
+    background-color: rgb(24, 26, 31);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 4rem;
+}
